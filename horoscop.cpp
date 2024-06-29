@@ -57,8 +57,12 @@ void Horoscop_info::set_prediction_on_the_week(string current_date) {
 
         m_prediction = predictions[lower_boundary + rand() % (horoscop::predictions_count - lower_boundary)];
     }
+}
 
-    cout << m_prediction << endl;
+void Horoscop_info::set_horoscop_data(string date_of_birth, string current_date) {
+    set_user_zodiac_sign(date_of_birth);
+
+    set_prediction_on_the_week(current_date);
 }
 
 horoscop::zodiac_sign Horoscop_info::get_user_zodiac_sign() {

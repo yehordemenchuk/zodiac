@@ -36,6 +36,7 @@ class Horoscop_info {
 public:
     void set_user_zodiac_sign(string date_of_birth);
     void set_prediction_on_the_week(string current_date);
+    void set_horoscop_data(string date_of_birth, string current_date);
     horoscop::zodiac_sign get_user_zodiac_sign();
     string get_prediction();
 };
