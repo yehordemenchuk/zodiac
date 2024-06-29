@@ -22,14 +22,13 @@ bool is_date_valid(string date) {
 
 void Horoscop_info::set_user_zodiac_sign(string date_of_birth) {
     int birth_day, birth_month, birth_year;
-    short zodiac_dates[horoscop::zodiac_dates_count] = { 20, 19, 21, 20, 21, 21, 23, 23, 23, 23, 22, 22 };
 
     sscanf(date_of_birth.c_str(), "%d.%d.%d", &birth_day, &birth_month, &birth_year);
 
-    if (birth_day <= zodiac_dates[birth_month - 1])
-        m_sign = static_cast<horoscop::zodiac_sign>(birth_month - 1);
+    if (birth_day <= horoscop::zodiac_final_dates[birth_month - horoscop::shift_number])
+        m_sign = static_cast<horoscop::zodiac_sign>(birth_month - horoscop::shift_number);
 
-    else if (birth_month == 12)
+    else if (birth_month == horoscop::december_number)
         m_sign = horoscop::CAPRICORN;
 
     else
