@@ -21,8 +21,6 @@ namespace horoscop {
         SAGGITARIUS
     };
 
-    //20, 19, 21, 20, 21, 21, 23, 23, 23, 23, 22, 22
-
     const short predictions_count = 24;
     const short zodiac_dates_count = 12;
     const string predictions_file_name = "predictions.txt";
