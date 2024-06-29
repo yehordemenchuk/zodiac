@@ -61,3 +61,11 @@ void Horoscop_info::set_prediction_on_the_week(string current_date) {
 
     cout << m_prediction << endl;
 }
+
+horoscop::zodiac_sign Horoscop_info::get_user_zodiac_sign() {
+    return m_sign;
+}
+
+string Horoscop_info::get_prediction() {
+    return m_prediction;
+}
