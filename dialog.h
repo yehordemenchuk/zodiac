@@ -10,7 +10,8 @@ namespace Ui {
 class Dialog;
 }
 
-namespace dialog {
+namespace dialog 
+{
     const QString capricorn_image_name = "capricorn.gif";
     const QString aquarius_image_name = "aquarius.gif";
     const QString pisces_image_name = "pisces.gif";
