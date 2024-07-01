@@ -5,13 +5,16 @@
 
 using namespace std;
 
-namespace horoscop {
-    enum validation_state {
+namespace horoscop 
+{
+    enum validation_state 
+    {
         SMALLER,
         BIGGER
     };
 
-    enum zodiac_sign {
+    enum zodiac_sign 
+    {
         CAPRICORN,
         AQUARIUS,
         PISCES,
@@ -35,7 +38,8 @@ namespace horoscop {
     const short base_year = 1900;
 };
 
-class Horoscop_info {
+class Horoscop_info 
+{
     horoscop::zodiac_sign m_sign;
     string m_prediction;
 
