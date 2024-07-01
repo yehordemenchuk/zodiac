@@ -38,11 +38,26 @@ public:
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/img/zodiac_icon.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
         MainWindow->setWindowIcon(icon);
+        MainWindow->setStyleSheet(QString::fromUtf8("QMainWindow {\n"
+"	background-color: rgb(59, 61, 91);\n"
+"}"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         horoscop_button = new QPushButton(centralwidget);
         horoscop_button->setObjectName("horoscop_button");
         horoscop_button->setGeometry(QRect(240, 470, 301, 29));
+        horoscop_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	color: white;\n"
+"	background-color: rgb(85, 0, 127);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"	background-color: darkviolet;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: indigo;\n"
+"}"));
         label = new QLabel(centralwidget);
         label->setObjectName("label");
         label->setGeometry(QRect(320, 200, 101, 51));

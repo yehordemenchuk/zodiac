@@ -28,6 +28,25 @@ void set_message(QMessageBox &message_box_ref, QString title, QString text, QStr
     message_box_ref.setIconPixmap(icon_pix_map);
 
     message_box_ref.setWindowIcon(window_icon);
+
+    message_box_ref.setStyleSheet(R"(
+                                  QMessageBox {
+                                    background-color: rgb(59, 61, 91);
+                                  }
+
+                                  QPushButton {
+                                    color: white;
+                                    background-color: rgb(85, 0, 127);
+                                  }
+
+                                  QPushButton:hover {
+                                    background-color: darkviolet;
+                                  }
+
+                                  QPushButton:pressed {
+                                    background-color: indigo;
+                                  }
+                                  )");
 }
 
 void set_horoscop_message(QMessageBox &horoscop_message_ref, Horoscop_info user_horoscop) {
@@ -37,73 +56,73 @@ void set_horoscop_message(QMessageBox &horoscop_message_ref, Horoscop_info user_
     switch(user_sign) {
         case horoscop::CAPRICORN:
             set_message(horoscop_message_ref, dialog::capricorn_message_title, user_prediction.c_str(), dialog::capricorn_image_name,
-                        dialog::path_to_zodiac_icon);
+                        dialog::name_of_window_icon);
 
             break;
 
         case horoscop::AQUARIUS:
             set_message(horoscop_message_ref, dialog::aquaris_message_title, user_prediction.c_str(), dialog::aquarius_image_name,
-                        dialog::path_to_zodiac_icon);
+                        dialog::name_of_window_icon);
 
             break;
 
         case horoscop::PISCES:
             set_message(horoscop_message_ref, dialog::pisces_message_title, user_prediction.c_str(), dialog::pisces_image_name,
-                        dialog::path_to_zodiac_icon);
+                        dialog::name_of_window_icon);
 
             break;
 
         case horoscop::ARIES:
             set_message(horoscop_message_ref, dialog::aries_message_title, user_prediction.c_str(), dialog::aries_image_name,
-                        dialog::path_to_zodiac_icon);
+                        dialog::name_of_window_icon);
 
             break;
 
         case horoscop::TAURUS:
             set_message(horoscop_message_ref, dialog::taurus_message_title, user_prediction.c_str(), dialog::taurus_image_name,
-                        dialog::path_to_zodiac_icon);
+                        dialog::name_of_window_icon);
 
             break;
 
         case horoscop::GEMINI:
             set_message(horoscop_message_ref, dialog::gemini_message_title, user_prediction.c_str(), dialog::gemini_image_name,
-                        dialog::path_to_zodiac_icon);
+                        dialog::name_of_window_icon);
 
             break;
 
         case horoscop::CANCER:
             set_message(horoscop_message_ref, dialog::cancer_message_title, user_prediction.c_str(), dialog::cancer_image_name,
-                        dialog::path_to_zodiac_icon);
+                        dialog::name_of_window_icon);
 
             break;
 
         case horoscop::LEO:
             set_message(horoscop_message_ref, dialog::leo_message_title, user_prediction.c_str(), dialog::leo_image_name,
-                        dialog::path_to_zodiac_icon);
+                        dialog::name_of_window_icon);
 
             break;
 
         case horoscop::VIRGO:
             set_message(horoscop_message_ref, dialog::virgo_message_title, user_prediction.c_str(), dialog::virgo_image_name,
-                        dialog::path_to_zodiac_icon);
+                        dialog::name_of_window_icon);
 
             break;
 
         case horoscop::LIBRA:
             set_message(horoscop_message_ref, dialog::libra_message_title, user_prediction.c_str(), dialog::libra_image_name,
-                        dialog::path_to_zodiac_icon);
+                        dialog::name_of_window_icon);
 
             break;
 
         case horoscop::SCORPIO:
             set_message(horoscop_message_ref, dialog::scorpio_message_title, user_prediction.c_str(), dialog::scorpio_image_name,
-                        dialog::path_to_zodiac_icon);
+                        dialog::name_of_window_icon);
 
             break;
 
         case horoscop::SAGGITARIUS:
             set_message(horoscop_message_ref, dialog::sagitarius_message_title, user_prediction.c_str(), dialog::sagitarius_image_name,
-                        dialog::path_to_zodiac_icon);
+                        dialog::name_of_window_icon);
 
             break;
     }
@@ -140,4 +159,3 @@ void Dialog::on_exit_button_clicked()
 {
     close();
 }
-

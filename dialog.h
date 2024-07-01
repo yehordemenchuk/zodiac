@@ -37,7 +37,7 @@ namespace dialog {
     const QString scorpio_message_title = "Scorpio";
     const QString sagitarius_message_title = "Sagitarius";
 
-    const QString path_to_zodiac_icon = ":/img/zodiac_icon.png";
+    const QString name_of_window_icon = "window_icon.png";
 };
 
 class Dialog : public QDialog

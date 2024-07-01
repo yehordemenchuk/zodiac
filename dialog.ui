@@ -17,6 +17,11 @@
    <iconset resource="resources.qrc">
     <normaloff>:/img/zodiac_icon.png</normaloff>:/img/zodiac_icon.png</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+	background-color: rgb(59, 61, 91);
+}</string>
+  </property>
   <widget class="QLineEdit" name="user_birth_date">
    <property name="geometry">
     <rect>
@@ -72,6 +77,20 @@
      <height>29</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	color: white;
+	background-color: rgb(85, 0, 127);
+}
+
+QPushButton:hover {
+	background-color: darkviolet;
+} 
+
+QPushButton:pressed {
+	background-color: indigo;
+}</string>
+   </property>
    <property name="text">
     <string>Get prediction</string>
    </property>
@@ -97,6 +116,20 @@
      <width>141</width>
      <height>29</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	color: white;
+	background-color: rgb(85, 0, 127);
+}
+
+QPushButton:hover {
+	background-color: darkviolet;
+} 
+
+QPushButton:pressed {
+	background-color: indigo;
+}</string>
    </property>
    <property name="text">
     <string>Exit</string>

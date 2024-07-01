@@ -39,6 +39,9 @@ public:
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/img/zodiac_icon.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
         Dialog->setWindowIcon(icon);
+        Dialog->setStyleSheet(QString::fromUtf8("QDialog {\n"
+"	background-color: rgb(59, 61, 91);\n"
+"}"));
         user_birth_date = new QLineEdit(Dialog);
         user_birth_date->setObjectName("user_birth_date");
         user_birth_date->setGeometry(QRect(100, 50, 161, 28));
@@ -54,12 +57,36 @@ public:
         prediction_button = new QPushButton(Dialog);
         prediction_button->setObjectName("prediction_button");
         prediction_button->setGeometry(QRect(40, 230, 141, 29));
+        prediction_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	color: white;\n"
+"	background-color: rgb(85, 0, 127);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"	background-color: darkviolet;\n"
+"} \n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: indigo;\n"
+"}"));
         label_3 = new QLabel(Dialog);
         label_3->setObjectName("label_3");
         label_3->setGeometry(QRect(120, 170, 63, 20));
         exit_button = new QPushButton(Dialog);
         exit_button->setObjectName("exit_button");
         exit_button->setGeometry(QRect(220, 230, 141, 29));
+        exit_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	color: white;\n"
+"	background-color: rgb(85, 0, 127);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"	background-color: darkviolet;\n"
+"} \n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: indigo;\n"
+"}"));
         error_label = new QLabel(Dialog);
         error_label->setObjectName("error_label");
         error_label->setGeometry(QRect(130, 160, 101, 20));

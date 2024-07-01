@@ -27,11 +27,11 @@ namespace horoscop {
     };
 
     const short predictions_count = 24;
-    const short zodiac_dates_count = 12;
+    const short zodiac_final_dates_count = 12;
     const string predictions_file_name = "predictions.txt";
     const short shift_number = 1;
     const short december_number = 12;
-    const short zodiac_final_dates[zodiac_dates_count] = { 20, 19, 21, 20, 21, 21, 23, 23, 23, 23, 22, 22 };
+    const short zodiac_final_dates[zodiac_final_dates_count] = { 20, 19, 21, 20, 21, 21, 23, 23, 23, 23, 22, 22 };
     const short base_year = 1900;
 };
 

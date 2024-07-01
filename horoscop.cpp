@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 #include <cstdio>
 #include <cstdlib>
@@ -41,8 +40,7 @@ bool is_date_relate_with_current(string date, horoscop::validation_state state) 
             else if (current_year == validating_year)
                 return current_day >= validating_day && current_month >= validating_month;
 
-            else
-                return false;
+            break;
 
         case horoscop::BIGGER:
             if (current_year < validating_year)
@@ -51,9 +49,10 @@ bool is_date_relate_with_current(string date, horoscop::validation_state state) 
             else if (current_year == validating_year)
                 return current_day <= validating_day && current_month <= validating_month;
 
-            else
-                return false;
+            break;
     }
+
+    return false;
 }
 
 bool is_date_valid(string date, horoscop::validation_state state) {

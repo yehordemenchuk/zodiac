@@ -17,6 +17,11 @@
    <iconset resource="resources.qrc">
     <normaloff>:/img/zodiac_icon.png</normaloff>:/img/zodiac_icon.png</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+	background-color: rgb(59, 61, 91);
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="horoscop_button">
     <property name="geometry">
@@ -26,6 +31,20 @@
       <width>301</width>
       <height>29</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	color: white;
+	background-color: rgb(85, 0, 127);
+}
+
+QPushButton:hover {
+	background-color: darkviolet;
+}
+
+QPushButton:pressed {
+	background-color: indigo;
+}</string>
     </property>
     <property name="text">
      <string>View your horoscop here</string>
