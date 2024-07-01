@@ -14,10 +14,52 @@ void upload_predictions(string predictions[]) {
         getline(predictions_file, predictions[i]);
 }
 
-bool is_date_valid(string date) {
+void get_current_date(int& current_day, int& current_month, int& current_year) {
+    time_t now = time(nullptr);
+    struct tm *time_info = localtime(&now);
+
+    current_day = time_info->tm_mday;
+
+    current_month = horoscop::shift_number + time_info->tm_mon;
+
+    current_year = horoscop::base_year + time_info->tm_year;
+}
+
+bool is_date_relate_with_current(string date, horoscop::validation_state state) {
+    int current_day, current_month, current_year;
+    int validating_day, validating_month, validating_year;
+
+    sscanf(date.c_str(), "%d.%d.%d", &validating_day, &validating_month, &validating_year);
+
+    get_current_date(current_day, current_month, current_year);
+
+    switch(state) {
+        case horoscop::SMALLER:
+            if (current_year > validating_year)
+                return true;
+
+            else if (current_year == validating_year)
+                return current_day >= validating_day && current_month >= validating_month;
+
+            else
+                return false;
+
+        case horoscop::BIGGER:
+            if (current_year < validating_year)
+                return true;
+
+            else if (current_year == validating_year)
+                return current_day <= validating_day && current_month <= validating_month;
+
+            else
+                return false;
+    }
+}
+
+bool is_date_valid(string date, horoscop::validation_state state) {
     regex date_pattern(R"(\b([0-9]|[0-2][0-9]|3[0-1])\.([0]?[0-9]|1[0-2])\.(\d{4})\b)");
 
-    return regex_match(date, date_pattern);
+    return regex_match(date, date_pattern) && is_date_relate_with_current(date, state);
 }
 
 void Horoscop_info::set_user_zodiac_sign(string date_of_birth) {

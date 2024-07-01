@@ -128,7 +128,7 @@ void Dialog::on_prediction_button_clicked()
     string birth_date { ui->user_birth_date->text().toStdString() };
     string prediction_date { ui->current_date->text().toStdString() };
 
-    if (is_date_valid(birth_date) && is_date_valid(prediction_date))
+    if (is_date_valid(birth_date, horoscop::SMALLER) && is_date_valid(prediction_date, horoscop::BIGGER))
         show_horoscop(birth_date, prediction_date);
 
     else

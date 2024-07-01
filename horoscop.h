@@ -6,6 +6,11 @@
 using namespace std;
 
 namespace horoscop {
+    enum validation_state {
+        SMALLER,
+        BIGGER
+    };
+
     enum zodiac_sign {
         CAPRICORN,
         AQUARIUS,
@@ -27,6 +32,7 @@ namespace horoscop {
     const short shift_number = 1;
     const short december_number = 12;
     const short zodiac_final_dates[zodiac_dates_count] = { 20, 19, 21, 20, 21, 21, 23, 23, 23, 23, 22, 22 };
+    const short base_year = 1900;
 };
 
 class Horoscop_info {
@@ -42,7 +48,9 @@ public:
 };
 
 void upload_predictions(string predictions[]);
-bool is_date_valid(string date);
+void get_current_date(int& current_day, int& current_month, int& current_year);
+bool is_date_relate_with_current(string date, horoscop::validation_state state);
+bool is_date_valid(string date, horoscop::validation_state state);
 void random_generator_init();
 
 #endif
