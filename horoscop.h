@@ -52,7 +52,7 @@ public:
 };
 
 void upload_predictions(string predictions[]);
-void get_current_date(int& current_day, int& current_month, int& current_year);
+void get_current_date(short& current_day, short& current_month, short& current_year);
 bool is_date_relate_with_current(string date, horoscop::validation_state state);
 bool is_date_valid(string date, horoscop::validation_state state);
 void random_generator_init();
