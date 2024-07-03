@@ -18,7 +18,8 @@ Dialog::~Dialog()
     delete ui;
 }
 
-void set_message(QMessageBox &message_box_ref, QString title, QString text, QString path_to_image, QString path_to_icon) {
+void set_message(QMessageBox &message_box_ref, QString title, QString text, QString path_to_image, QString path_to_icon) 
+{
     message_box_ref.setWindowTitle(title);
 
     message_box_ref.setText(text);
@@ -49,11 +50,13 @@ void set_message(QMessageBox &message_box_ref, QString title, QString text, QStr
                                   )");
 }
 
-void set_horoscop_message(QMessageBox &horoscop_message_ref, Horoscop_info user_horoscop) {
+void set_horoscop_message(QMessageBox &horoscop_message_ref, Horoscop_info user_horoscop) 
+{
     horoscop::zodiac_sign user_sign = user_horoscop.get_user_zodiac_sign();
     string user_prediction = user_horoscop.get_prediction();
 
-    switch(user_sign) {
+    switch(user_sign) 
+    {
         case horoscop::CAPRICORN:
             set_message(horoscop_message_ref, dialog::capricorn_message_title, user_prediction.c_str(), dialog::capricorn_image_name,
                         dialog::name_of_window_icon);
@@ -128,7 +131,8 @@ void set_horoscop_message(QMessageBox &horoscop_message_ref, Horoscop_info user_
     }
 }
 
-void Dialog::show_horoscop(string birth_date, string prediction_date) {
+void Dialog::show_horoscop(string birth_date, string prediction_date) 
+{
     ui->error_label->clear();
 
     Horoscop_info user_horoscop;
