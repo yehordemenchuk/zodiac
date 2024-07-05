@@ -6,7 +6,7 @@
 #include <regex>
 #include "horoscop.h"
 
-void upload_predictions(string predictions[]) 
+void upload_predictions(string predictions[])
 {
     ifstream predictions_file { horoscop::predictions_file_name };
 
@@ -87,7 +87,7 @@ void random_generator_init()
     srand(time(nullptr));
 }
 
-void Horoscop_info::set_prediction_on_the_week(string current_date) 
+void Horoscop_info::set_prediction_on_the_week(string current_date)
 {
     short current_day, current_month, current_year;
     string predictions[horoscop::predictions_count];
@@ -109,7 +109,7 @@ void Horoscop_info::set_prediction_on_the_week(string current_date)
     }
 }
 
-void Horoscop_info::set_horoscop_data(string date_of_birth, string current_date) 
+void Horoscop_info::set_horoscop_data(string date_of_birth, string current_date)
 {
     set_user_zodiac_sign(date_of_birth);
 
