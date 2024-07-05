@@ -62,5 +62,6 @@ private:
 
 void set_message(QMessageBox &message_box_ref, QString title, QString text, QString path_to_image);
 void set_horoscop_message(QMessageBox &horoscop_message_ref, Horoscop_info user_horoscop);
+void check_predictions_file();
 
 #endif // DIALOG_H

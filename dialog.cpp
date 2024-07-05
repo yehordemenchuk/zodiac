@@ -1,4 +1,6 @@
 #include <string>
+#include <fstream>
+#include <cstdlib>
 #include <QMessageBox>
 #include <QString>
 #include <QPixmap>
@@ -131,8 +133,21 @@ void set_horoscop_message(QMessageBox &horoscop_message_ref, Horoscop_info user_
     }
 }
 
+void check_predictions_file()
+{
+    ifstream predicitons_file { horoscop::predictions_file_name };
+
+    if (!predicitons_file) {
+        QMessageBox::critical(nullptr, "Error", "File \"predictions.txt\" were corrupted or lost.");
+
+        exit(EXIT_FAILURE);
+    }
+}
+
 void Dialog::show_horoscop(string birth_date, string prediction_date) 
 {
+    check_predictions_file();
+
     ui->error_label->clear();
 
     Horoscop_info user_horoscop;
