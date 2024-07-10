@@ -3,7 +3,6 @@
 
 #include <QDialog>
 #include <QMessageBox>
-#include <QString>
 #include "horoscop.h"
 
 namespace Ui {
@@ -12,33 +11,33 @@ class Dialog;
 
 namespace dialog 
 {
-    const QString capricorn_image_name = "capricorn.gif";
-    const QString aquarius_image_name = "aquarius.gif";
-    const QString pisces_image_name = "pisces.gif";
-    const QString aries_image_name = "aries.gif";
-    const QString taurus_image_name = "taurus.gif";
-    const QString gemini_image_name = "gemini.gif";
-    const QString cancer_image_name = "cancer.gif";
-    const QString leo_image_name = "leo.gif";
-    const QString virgo_image_name = "virgo.gif";
-    const QString libra_image_name = "libra.gif";
-    const QString scorpio_image_name = "scorpio.gif";
-    const QString sagitarius_image_name = "sagitarius.gif";
+    const char capricorn_image_name[] = "capricorn.gif";
+    const char aquarius_image_name[] = "aquarius.gif";
+    const char pisces_image_name[] = "pisces.gif";
+    const char aries_image_name[] = "aries.gif";
+    const char taurus_image_name[] = "taurus.gif";
+    const char gemini_image_name[] = "gemini.gif";
+    const char cancer_image_name[] = "cancer.gif";
+    const char leo_image_name[] = "leo.gif";
+    const char virgo_image_name[] = "virgo.gif";
+    const char libra_image_name[] = "libra.gif";
+    const char scorpio_image_name[] = "scorpio.gif";
+    const char sagitarius_image_name[] = "sagitarius.gif";
 
-    const QString capricorn_message_title = "Capricorn";
-    const QString aquaris_message_title = "Aquaris";
-    const QString pisces_message_title = "Pisces";
-    const QString aries_message_title = "Aries";
-    const QString taurus_message_title = "Taurus";
-    const QString gemini_message_title = "Gemini";
-    const QString cancer_message_title = "Cancer";
-    const QString leo_message_title = "Leo";
-    const QString virgo_message_title = "Virgo";
-    const QString libra_message_title = "Libra";
-    const QString scorpio_message_title = "Scorpio";
-    const QString sagitarius_message_title = "Sagitarius";
+    const char capricorn_message_title[] = "Capricorn";
+    const char aquaris_message_title[] = "Aquaris";
+    const char pisces_message_title[] = "Pisces";
+    const char aries_message_title[] = "Aries";
+    const char taurus_message_title[] = "Taurus";
+    const char gemini_message_title[] = "Gemini";
+    const char cancer_message_title[] = "Cancer";
+    const char leo_message_title[] = "Leo";
+    const char virgo_message_title[] = "Virgo";
+    const char libra_message_title[] = "Libra";
+    const char scorpio_message_title[] = "Scorpio";
+    const char sagitarius_message_title[] = "Sagitarius";
 
-    const QString name_of_window_icon = "window_icon.png";
+    const char name_of_window_icon[] = "window_icon.png";
 };
 
 class Dialog : public QDialog
