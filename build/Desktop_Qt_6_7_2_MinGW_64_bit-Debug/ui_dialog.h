@@ -16,20 +16,24 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_Dialog
 {
 public:
-    QLineEdit *user_birth_date;
-    QLabel *label;
-    QLineEdit *current_date;
-    QLabel *label_2;
     QPushButton *prediction_button;
-    QLabel *label_3;
     QPushButton *exit_button;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout;
+    QLabel *label;
+    QLineEdit *user_birth_date;
+    QLabel *label_2;
+    QLineEdit *current_date;
     QLabel *error_label;
+    QLabel *label_3;
 
     void setupUi(QDialog *Dialog)
     {
@@ -42,18 +46,6 @@ public:
         Dialog->setStyleSheet(QString::fromUtf8("QDialog {\n"
 "	background-color: rgb(59, 61, 91);\n"
 "}"));
-        user_birth_date = new QLineEdit(Dialog);
-        user_birth_date->setObjectName("user_birth_date");
-        user_birth_date->setGeometry(QRect(100, 50, 161, 28));
-        label = new QLabel(Dialog);
-        label->setObjectName("label");
-        label->setGeometry(QRect(110, 20, 141, 20));
-        current_date = new QLineEdit(Dialog);
-        current_date->setObjectName("current_date");
-        current_date->setGeometry(QRect(100, 120, 161, 28));
-        label_2 = new QLabel(Dialog);
-        label_2->setObjectName("label_2");
-        label_2->setGeometry(QRect(110, 90, 161, 20));
         prediction_button = new QPushButton(Dialog);
         prediction_button->setObjectName("prediction_button");
         prediction_button->setGeometry(QRect(40, 230, 141, 29));
@@ -69,9 +61,6 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: indigo;\n"
 "}"));
-        label_3 = new QLabel(Dialog);
-        label_3->setObjectName("label_3");
-        label_3->setGeometry(QRect(120, 170, 63, 20));
         exit_button = new QPushButton(Dialog);
         exit_button->setObjectName("exit_button");
         exit_button->setGeometry(QRect(220, 230, 141, 29));
@@ -87,9 +76,42 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: indigo;\n"
 "}"));
-        error_label = new QLabel(Dialog);
+        widget = new QWidget(Dialog);
+        widget->setObjectName("widget");
+        widget->setGeometry(QRect(120, 30, 160, 173));
+        verticalLayout = new QVBoxLayout(widget);
+        verticalLayout->setObjectName("verticalLayout");
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        label = new QLabel(widget);
+        label->setObjectName("label");
+
+        verticalLayout->addWidget(label);
+
+        user_birth_date = new QLineEdit(widget);
+        user_birth_date->setObjectName("user_birth_date");
+
+        verticalLayout->addWidget(user_birth_date);
+
+        label_2 = new QLabel(widget);
+        label_2->setObjectName("label_2");
+
+        verticalLayout->addWidget(label_2);
+
+        current_date = new QLineEdit(widget);
+        current_date->setObjectName("current_date");
+
+        verticalLayout->addWidget(current_date);
+
+        error_label = new QLabel(widget);
         error_label->setObjectName("error_label");
-        error_label->setGeometry(QRect(130, 160, 101, 20));
+
+        verticalLayout->addWidget(error_label);
+
+        label_3 = new QLabel(widget);
+        label_3->setObjectName("label_3");
+
+        verticalLayout->addWidget(label_3);
+
 
         retranslateUi(Dialog);
 
@@ -99,12 +121,12 @@ public:
     void retranslateUi(QDialog *Dialog)
     {
         Dialog->setWindowTitle(QCoreApplication::translate("Dialog", "Zodiac", nullptr));
+        prediction_button->setText(QCoreApplication::translate("Dialog", "Get prediction", nullptr));
+        exit_button->setText(QCoreApplication::translate("Dialog", "Exit", nullptr));
         label->setText(QCoreApplication::translate("Dialog", "Enter your birth date", nullptr));
         label_2->setText(QCoreApplication::translate("Dialog", "Enter date of prediction", nullptr));
-        prediction_button->setText(QCoreApplication::translate("Dialog", "Get prediction", nullptr));
-        label_3->setText(QString());
-        exit_button->setText(QCoreApplication::translate("Dialog", "Exit", nullptr));
         error_label->setText(QString());
+        label_3->setText(QString());
     } // retranslateUi
 
 };
