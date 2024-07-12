@@ -137,7 +137,8 @@ void check_predictions_file()
 {
     ifstream predicitons_file { horoscop::predictions_file_name };
 
-    if (!predicitons_file) {
+    if (!predicitons_file) 
+    {
         QMessageBox::critical(nullptr, "Error", "File \"predictions.txt\" were corrupted or lost.");
 
         exit(EXIT_FAILURE);

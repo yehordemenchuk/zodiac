@@ -5,8 +5,9 @@
 #include <QMessageBox>
 #include "horoscop.h"
 
-namespace Ui {
-class Dialog;
+namespace Ui 
+{
+    class Dialog;
 }
 
 namespace dialog 
