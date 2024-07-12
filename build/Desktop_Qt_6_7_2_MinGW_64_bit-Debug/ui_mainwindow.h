@@ -27,6 +27,7 @@ public:
     QWidget *centralwidget;
     QPushButton *horoscop_button;
     QLabel *label;
+    QLabel *label_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -61,6 +62,9 @@ public:
         label = new QLabel(centralwidget);
         label->setObjectName("label");
         label->setGeometry(QRect(320, 200, 101, 51));
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(260, 270, 301, 31));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -80,6 +84,7 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Zodiac", nullptr));
         horoscop_button->setText(QCoreApplication::translate("MainWindow", "View your horoscop here", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><h1 style=\" margin-top:18px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:xx-large; font-weight:700; font-style:italic;\">Zodiac</span></h1></body></html>", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:700; font-style:italic;\">Get the most accurate horoscop</span></p></body></html>", nullptr));
     } // retranslateUi
 
 };
