@@ -19,7 +19,7 @@ CXXFLAGS      = -fno-keep-inline-dllexport -O2 -std=gnu++1z -Wall -Wextra -Wextr
 INCPATH       = -I../../../zodiac -I. -ID:/Qt/6.7.2/mingw_64/include -ID:/Qt/6.7.2/mingw_64/include/QtWidgets -ID:/Qt/6.7.2/mingw_64/include/QtGui -ID:/Qt/6.7.2/mingw_64/include/QtCore -Irelease -I. -I/include -ID:/Qt/6.7.2/mingw_64/mkspecs/win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,windows -mthreads
-LIBS        =        D:\Qt\6.7.2\mingw_64\lib\libQt6Widgets.a D:\Qt\6.7.2\mingw_64\lib\libQt6Gui.a D:\Qt\6.7.2\mingw_64\lib\libQt6Core.a -lmingw32 D:\Qt\6.7.2\mingw_64\lib\libQt6EntryPoint.a -lshell32  
+LIBS        =        D:\Qt\6.7.2\mingw_64\lib\libQt6Widgets.a D:\Qt\6.7.2\mingw_64\lib\libQt6Gui.a D:\Qt\6.7.2\mingw_64\lib\libQt6Core.a release\icon_res.o -lmingw32 D:\Qt\6.7.2\mingw_64\lib\libQt6EntryPoint.a -lshell32  
 QMAKE         = D:\Qt\6.7.2\mingw_64\bin\qmake.exe
 DEL_FILE      = del
 CHK_DIR_EXISTS= if not exist
@@ -40,7 +40,7 @@ IDC           = idc
 IDL           = midl
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = 
+RES_FILE      = release\icon_res.o
 SED           = $(QMAKE) -install sed
 MOVE          = move
 
@@ -80,8 +80,11 @@ DESTDIR_TARGET = release\zodiac.exe
 first: all
 all: Makefile.Release  release/zodiac.exe
 
-release/zodiac.exe: D:/Qt/6.7.2/mingw_64/lib/libQt6Widgets.a D:/Qt/6.7.2/mingw_64/lib/libQt6Gui.a D:/Qt/6.7.2/mingw_64/lib/libQt6Core.a D:/Qt/6.7.2/mingw_64/lib/libQt6EntryPoint.a ui_dialog.h ui_mainwindow.h $(OBJECTS) 
+release/zodiac.exe: D:/Qt/6.7.2/mingw_64/lib/libQt6Widgets.a D:/Qt/6.7.2/mingw_64/lib/libQt6Gui.a D:/Qt/6.7.2/mingw_64/lib/libQt6Core.a D:/Qt/6.7.2/mingw_64/lib/libQt6EntryPoint.a ui_dialog.h ui_mainwindow.h $(OBJECTS) release/icon_res.o
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS) $(LIBS)
+
+release/icon_res.o: ../../icon.rc
+	windres -i ..\..\icon.rc -o release\icon_res.o --include-dir=./../.. $(DEFINES)
 
 qmake: FORCE
 	@$(QMAKE) -o Makefile.Release ..\..\zodiac.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -93,6 +96,7 @@ dist:
 
 clean: compiler_clean 
 	-$(DEL_FILE) release\dialog.o release\main.o release\mainwindow.o release\horoscop.o release\qrc_resources.o release\moc_dialog.o release\moc_mainwindow.o
+	-$(DEL_FILE) release\icon_res.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -314,6 +318,9 @@ release/moc_dialog.cpp: ../../dialog.h \
 		D:/Qt/6.7.2/mingw_64/include/QtGui/qinputmethod.h \
 		D:/Qt/6.7.2/mingw_64/include/QtCore/qlocale.h \
 		D:/Qt/6.7.2/mingw_64/include/QtGui/qguiapplication_platform.h \
+		D:/Qt/6.7.2/mingw_64/include/QtWidgets/QMessageBox \
+		D:/Qt/6.7.2/mingw_64/include/QtWidgets/qmessagebox.h \
+		D:/Qt/6.7.2/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		../../horoscop.h \
 		release/moc_predefs.h \
 		D:/Qt/6.7.2/mingw_64/bin/moc.exe
@@ -728,6 +735,8 @@ release/dialog.o: ../../dialog.cpp D:/Qt/6.7.2/mingw_64/include/QtWidgets/QMessa
 		D:/Qt/6.7.2/mingw_64/include/QtCore/qlocale.h \
 		D:/Qt/6.7.2/mingw_64/include/QtGui/qguiapplication_platform.h \
 		D:/Qt/6.7.2/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+		D:/Qt/6.7.2/mingw_64/include/QtCore/QString \
+		D:/Qt/6.7.2/mingw_64/include/QtGui/QPixmap \
 		../../dialog.h \
 		D:/Qt/6.7.2/mingw_64/include/QtWidgets/QDialog \
 		../../horoscop.h \
@@ -749,7 +758,13 @@ release/dialog.o: ../../dialog.cpp D:/Qt/6.7.2/mingw_64/include/QtWidgets/QMessa
 		D:/Qt/6.7.2/mingw_64/include/QtGui/qtextoption.h \
 		D:/Qt/6.7.2/mingw_64/include/QtWidgets/QPushButton \
 		D:/Qt/6.7.2/mingw_64/include/QtWidgets/qpushbutton.h \
-		D:/Qt/6.7.2/mingw_64/include/QtWidgets/qabstractbutton.h
+		D:/Qt/6.7.2/mingw_64/include/QtWidgets/qabstractbutton.h \
+		D:/Qt/6.7.2/mingw_64/include/QtWidgets/QVBoxLayout \
+		D:/Qt/6.7.2/mingw_64/include/QtWidgets/qboxlayout.h \
+		D:/Qt/6.7.2/mingw_64/include/QtWidgets/qlayout.h \
+		D:/Qt/6.7.2/mingw_64/include/QtWidgets/qlayoutitem.h \
+		D:/Qt/6.7.2/mingw_64/include/QtWidgets/qgridlayout.h \
+		D:/Qt/6.7.2/mingw_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\dialog.o ..\..\dialog.cpp
 
 release/main.o: ../../main.cpp ../../mainwindow.h \
@@ -1137,6 +1152,9 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../dialog.h \
 		D:/Qt/6.7.2/mingw_64/include/QtWidgets/QDialog \
 		D:/Qt/6.7.2/mingw_64/include/QtWidgets/qdialog.h \
+		D:/Qt/6.7.2/mingw_64/include/QtWidgets/QMessageBox \
+		D:/Qt/6.7.2/mingw_64/include/QtWidgets/qmessagebox.h \
+		D:/Qt/6.7.2/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		../../horoscop.h \
 		ui_mainwindow.h \
 		D:/Qt/6.7.2/mingw_64/include/QtCore/QVariant \
@@ -1156,10 +1174,7 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		D:/Qt/6.7.2/mingw_64/include/QtWidgets/qabstractbutton.h \
 		D:/Qt/6.7.2/mingw_64/include/QtWidgets/QStatusBar \
 		D:/Qt/6.7.2/mingw_64/include/QtWidgets/qstatusbar.h \
-		D:/Qt/6.7.2/mingw_64/include/QtWidgets/QWidget \
-		D:/Qt/6.7.2/mingw_64/include/QtWidgets/QMessageBox \
-		D:/Qt/6.7.2/mingw_64/include/QtWidgets/qmessagebox.h \
-		D:/Qt/6.7.2/mingw_64/include/QtWidgets/qdialogbuttonbox.h
+		D:/Qt/6.7.2/mingw_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\..\mainwindow.cpp
 
 release/horoscop.o: ../../horoscop.cpp ../../horoscop.h
