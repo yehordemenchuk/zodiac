@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>zodiac_icon.png</file>
+        <file>aires.gif</file>
+        <file>aquarius.gif</file>
+        <file>cancer.gif</file>
+        <file>capricorn.gif</file>
+        <file>gemini.gif</file>
+        <file>leo.gif</file>
+        <file>libra.gif</file>
+        <file>pisces.gif</file>
+        <file>sagitarius.gif</file>
+        <file>scorpio.gif</file>
+        <file>taurus.gif</file>
+        <file>virgo.gif</file>
+        <file>window_icon.png</file>
+    </qresource>
+    <qresource prefix="/files"/>
+    <qresource prefix="/file"/>
+    <qresource prefix="/program_files">
+        <file>predictions.txt</file>
+    </qresource>
+</RCC>
