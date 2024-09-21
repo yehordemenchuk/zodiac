@@ -4,10 +4,10 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication horoscop_application(argc, argv);
-    MainWindow main_window;
+    QApplication a(argc, argv);
+    MainWindow w;
 
-    main_window.show();
+    w.show();
 
-    return horoscop_application.exec();
+    return a.exec();
 }
