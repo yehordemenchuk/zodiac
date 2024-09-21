@@ -12,18 +12,18 @@ namespace Ui
 
 namespace dialog 
 {
-    const char capricorn_image_name[] = "capricorn.gif";
-    const char aquarius_image_name[] = "aquarius.gif";
-    const char pisces_image_name[] = "pisces.gif";
-    const char aries_image_name[] = "aries.gif";
-    const char taurus_image_name[] = "taurus.gif";
-    const char gemini_image_name[] = "gemini.gif";
-    const char cancer_image_name[] = "cancer.gif";
-    const char leo_image_name[] = "leo.gif";
-    const char virgo_image_name[] = "virgo.gif";
-    const char libra_image_name[] = "libra.gif";
-    const char scorpio_image_name[] = "scorpio.gif";
-    const char sagitarius_image_name[] = "sagitarius.gif";
+    const char capricorn_image_path[] = ":\\img\\capricorn.gif";
+    const char aquarius_image_path[] = ":\\img\\aquarius.gif";
+    const char pisces_image_path[] = ":\\img\\pisces.gif";
+    const char aries_image_path[] = ":\\img\\aries.gif";
+    const char taurus_image_path[] = ":\\img\\taurus.gif";
+    const char gemini_image_path[] = ":\\img\\gemini.gif";
+    const char cancer_image_path[] = ":\\img\\cancer.gif";
+    const char leo_image_path[] = ":\\img\\leo.gif";
+    const char virgo_image_path[] = ":\\img\\virgo.gif";
+    const char libra_image_path[] = ":\\img\\libra.gif";
+    const char scorpio_image_path[] = ":\\img\\scorpio.gif";
+    const char sagitarius_image_path[] = ":\\img\\sagitarius.gif";
 
     const char capricorn_message_title[] = "Capricorn";
     const char aquaris_message_title[] = "Aquaris";
@@ -38,7 +38,7 @@ namespace dialog
     const char scorpio_message_title[] = "Scorpio";
     const char sagitarius_message_title[] = "Sagitarius";
 
-    const char name_of_window_icon[] = "window_icon.png";
+    const char window_icon_path[] = ":\\img\\window_icon.png";
 };
 
 class Dialog : public QDialog
@@ -62,6 +62,5 @@ private:
 
 void set_message(QMessageBox &message_box_ref, QString title, QString text, QString path_to_image);
 void set_horoscop_message(QMessageBox &horoscop_message_ref, Horoscop_info user_horoscop);
-void check_predictions_file();
 
 #endif // DIALOG_H

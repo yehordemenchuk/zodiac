@@ -2,17 +2,11 @@
 #include <cstdio>
 #include <cstdlib>
 #include <ctime>
-#include <fstream>
 #include <regex>
+#include <QFile>
+#include <QMessageBox>
+#include <QTextStream>
 #include "horoscop.h"
-
-void upload_predictions(string predictions[])
-{
-    ifstream predictions_file { horoscop::predictions_file_name };
-
-    for (int i = 0; i != horoscop::predictions_count; ++i)
-        getline(predictions_file, predictions[i]);
-}
 
 void get_current_date(short& current_day, short& current_month, short& current_year)
 {
@@ -66,57 +60,33 @@ bool is_date_valid(string date, horoscop::validation_state state)
     return regex_match(date, date_pattern) && is_date_relate_with_current(date, state);
 }
 
-void Horoscop_info::set_user_zodiac_sign(string date_of_birth) 
-{
-    short birth_day, birth_month, birth_year;
-
-    sscanf(date_of_birth.c_str(), "%hd.%hd.%hd", &birth_day, &birth_month, &birth_year);
-
-    if (birth_day <= horoscop::zodiac_final_dates[birth_month - horoscop::shift_number])
-        m_sign = static_cast<horoscop::zodiac_sign>(birth_month - horoscop::shift_number);
-
-    else if (birth_month == horoscop::december_number)
-        m_sign = horoscop::CAPRICORN;
-
-    else
-        m_sign = static_cast<horoscop::zodiac_sign>(birth_month);
+bool is_input_valid(string current_date, string birth_date) {
+    return is_date_valid(current_date, horoscop::BIGGER) && is_date_valid(birth_date, horoscop::SMALLER);
 }
 
-void random_generator_init() 
+void random_generator_init()
 {
     srand(time(nullptr));
 }
 
-void Horoscop_info::set_prediction_on_the_week(string current_date)
+Horoscop_info::Horoscop_info(horoscop::zodiac_sign sign, string prediction)
 {
-    short current_day, current_month, current_year;
-    string predictions[horoscop::predictions_count];
+    m_sign = sign;
 
-    sscanf(current_date.c_str(), "%hd.%hd.%hd", &current_day, &current_month, &current_year);
-
-    upload_predictions(predictions);
-
-    random_generator_init();
-
-    if (current_day < horoscop::predictions_count)
-        m_prediction = predictions[current_day + rand() % (horoscop::predictions_count - current_day)];
-
-    else 
-    {
-        short lower_boundary = current_day - horoscop::predictions_count;
-
-        m_prediction = predictions[lower_boundary + rand() % (horoscop::predictions_count - lower_boundary)];
-    }
+    m_prediction = prediction;
 }
 
-void Horoscop_info::set_horoscop_data(string date_of_birth, string current_date)
+void Horoscop_info::set_sign(horoscop::zodiac_sign sign)
 {
-    set_user_zodiac_sign(date_of_birth);
-
-    set_prediction_on_the_week(current_date);
+    m_sign = sign;
 }
 
-horoscop::zodiac_sign Horoscop_info::get_user_zodiac_sign() 
+void Horoscop_info::set_prediction(string prediction)
+{   
+    m_prediction = prediction;
+}
+
+horoscop::zodiac_sign Horoscop_info::get_sign()
 {
     return m_sign;
 }
@@ -124,4 +94,67 @@ horoscop::zodiac_sign Horoscop_info::get_user_zodiac_sign()
 string Horoscop_info::get_prediction() 
 {
     return m_prediction;
+}
+
+void Horoscop_predictor::set_predictions()
+{
+    QFile predictions_file { horoscop::predictions_file_path };
+
+    if (!predictions_file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        QMessageBox::critical(nullptr, "Error", "File \"predictions.txt\" were corrupted or lost.");
+
+        exit(EXIT_FAILURE);
+    }
+
+    QTextStream in { &predictions_file };
+
+    for (int i = 0; i != horoscop::predictions_count; ++i)
+        m_predictions[i] = in.readLine().toStdString();
+}
+
+string* Horoscop_predictor::get_predictions()
+{
+    return m_predictions;
+}
+
+horoscop::zodiac_sign Horoscop_predictor::determine_zodiac_sign(string birth_date)
+{
+    short birth_day, birth_month, birth_year;
+
+    sscanf(birth_date.c_str(), "%hd.%hd.%hd", &birth_day, &birth_month, &birth_year);
+
+    if (birth_day <= horoscop::zodiac_final_dates[birth_month - horoscop::shift_number])
+        return static_cast<horoscop::zodiac_sign>(birth_month - horoscop::shift_number);
+
+    else if (birth_month == horoscop::december_number)
+        return horoscop::CAPRICORN;
+
+    else
+        return static_cast<horoscop::zodiac_sign>(birth_month);
+}
+
+string Horoscop_predictor::make_prediction(string current_date, horoscop::zodiac_sign sign)
+{
+    short current_day, current_month, current_year, lower_boundary;
+
+    sscanf(current_date.c_str(), "%hd.%hd.%hd", &current_day, &current_month, &current_year);
+
+    random_generator_init();
+
+    lower_boundary = (current_day + current_month + current_year + sign) % horoscop::predictions_count;
+
+    if (horoscop::predictions_count - lower_boundary < horoscop::max_difference)
+        lower_boundary -= horoscop::max_difference;
+
+    return m_predictions[lower_boundary + rand() % (horoscop::predictions_count - lower_boundary)];
+}
+
+Horoscop_info Horoscop_predictor::make_user_horoscop_data(string birth_date, string current_date)
+{
+    horoscop::zodiac_sign sign = determine_zodiac_sign(birth_date);
+
+    string prediction = make_prediction(current_date, sign);
+
+    return Horoscop_info { sign, prediction };
 }
