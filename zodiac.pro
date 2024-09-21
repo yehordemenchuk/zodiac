@@ -20,10 +20,10 @@ HEADERS += \
     horoscop.h
 
 FORMS += \
-    dialog.ui \
-    mainwindow.ui
+    ui/dialog.ui \
+    ui/mainwindow.ui
 
-win32:RC_FILE = icon.rc
+win32:RC_FILE = resources/icon.rc
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -31,4 +31,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    resources.qrc
+    resources/resources.qrc

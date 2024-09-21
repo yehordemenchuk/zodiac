@@ -15,7 +15,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 void MainWindow::on_horoscop_button_clicked()
 {
     close();
